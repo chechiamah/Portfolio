@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chechi Amah | Creative Technologist</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700&display=swap');
+        
+        :root {
+            --paper-1: #f5f1e8;
+            --paper-2: #e8e0d1;
+            --ink: #2a2723;
+            --tape-blue: rgba(174, 206, 224, 0.6);
+            --tape-pink: rgba(224, 174, 203, 0.6);
+            --highlight: #ff6b6b;
+            --shadow: rgba(0, 0, 0, 0.2);
+        }
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--paper-2);
+            color: var(--ink);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23f5f1e8" opacity="0.3"/></svg>'),
+                linear-gradient(to bottom, var(--paper-2), var(--paper-1));
+            background-attachment: fixed;
+        }
+        
+        header {
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            background: url('data:image/svg+xml;utf8,<svg width="600" height="200" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 Q150,0 300,50 T600,50 L600,200 L0,200 Z" fill="%23f5f1e8" stroke="%232a2723" stroke-width="0.5"/></svg>') center bottom no-repeat;
+            background-size: 100% auto;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 0 var(--shadow);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--tape-blue);
+            transform: rotate(-1deg);
+            z-index: -1;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            background: var(--paper-1);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            box-shadow: inset 0 0 0 1px var(--ink);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--paper-1);
+            margin: 2rem auto;
+            width: fit-content;
+            border-radius: 50px;
+            box-shadow: 
+                0 3px 5px var(--shadow),
+                inset 0 0 0 1px var(--ink);
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+        }
+        
+        nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a:hover {
+            background: var(--tape-pink);
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        nav a:hover::before {
+            transform: translateX(100%);
+        }
+        
+        section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--ink);
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: calc(100% + 10px);
+            background: var(--paper-1);
+            z-index: -1;
+            transform: rotate(-0.5deg);
+            box-shadow: 0 0 0 1px var(--ink);
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            width: 80px;
+            height: 20px;
+            background: var(--tape-blue);
+            transform: rotate(-2deg);
+            z-index: -2;
+            opacity: 0.7;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: var(--paper-1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 5px 15px var(--shadow),
+                0 0 0 1px var(--ink);
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 
+                0 15px 30px var(--shadow),
+                0 0 0 1px var(--ink);
+        }
+        
+        .project-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--ink);
+            position: relative;
+        }
+        
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.3));
+        }
+        
+        .project-info {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .project-info h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .project-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--highlight);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-info h3::after {
+            transform: scaleX(1);
+        }
+        
+        .project-tools {
+            font-size: 0.9rem;
+            color: var(--ink);
+            opacity: 0.8;
+            margin: 1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .project-tools span {
+            background: var(--paper-2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            border: 1px solid var(--ink);
+        }
+        
+        .project-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: transparent;
+            box-shadow: 
+                inset 0 0 0 1px var(--ink),
+                0 3px 5px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-link:hover {
+            background: var(--highlight);
+            color: white;
+            box-shadow: 
+                inset 0 0 0 1px var(--highlight),
+                0 5px 10px var(--shadow);
+        }
+        
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-link:hover::before {
+            transform: translateX(100%);
+        }
+        
+        /* About section */
+        .about-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            background: var(--paper-1);
+            padding: 3rem;
+            border-radius: 5px;
+            box-shadow: 
+                0 5px 15px var(--shadow),
+                0 0 0 1px var(--ink);
+            position: relative;
+            margin-top: 3rem;
+        }
+        
+        .about-container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 100px;
+            height: 60px;
+            background: var(--tape-pink);
+            transform: rotate(5deg);
+            z-index: -1;
+        }
+        
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 
+                0 5px 15px var(--shadow),
+                0 0 0 1px var(--ink);
+            transform: rotate(-2deg);
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: rotate(0deg);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .tools-list {
+            columns: 2;
+            list-style-type: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        
+        .tools-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .tools-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            background: var(--paper-1);
+            box-shadow: inset 0 5px 10px var(--shadow);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--tape-blue), var(--tape-pink), var(--tape-blue));
+        }
+        
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chechi Amah</h1>
+        <p class="tagline">Material systems & coded ecologies</p>
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#generative">Generative Systems</a>
+        <a href="#data">Data Terrains</a>
+        <a href="#interactive">Interactive Media</a>
+        <a href="#critical">Critical Cartography</a>
+    </nav>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <img src="assets/Chechi Amah Portrait.jpeg" alt="Chechi Amah" class="profile-pic">
+            <div class="about-text">
+                <p><strong>Chechi Amah</strong> is a <strong>creative technologist</strong> studying <strong>Design Media Arts</strong>, with a minor in <strong>Geographic Information Systems & Technologies</strong>. She explores the intersections of <strong>art</strong>, <strong>technology</strong>, and the <strong>environment</strong> through mixed-media systems.</p>
+                
+                <h3>Material Toolkit</h3>
+                <ul class="tools-list">
+                    <li>p5.js & Processing</li>
+                    <li>QGIS & Earth Engine</li>
+                    <li>Tone.js & Web Audio</li>
+                    <li>ComfyUI & Stable Diffusion</li>
+                    <li>Blender & After Effects</li>
+                    <li>HTML/CSS/JavaScript</li>
+                    <li>Python for Data Visualization</li>
+                    <li>GIS & Spatial Analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="generative">
+        <h2>Generative Systems</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/phyllotaxis gradient.jpg');"></div>
+                <div class="project-info">
+                    <h3>Phyllotaxis Gradient</h3>
+                    <div class="project-tools">
+                        <span>p5.js</span>
+                        <span>HSB/RGB</span>
+                        <span>Natural Math</span>
+                    </div>
+                    <p>Algorithmic exploration of plant growth patterns using the golden angle.</p>
+                    <a href="phyllotaxis.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/cellula mutatio.png')"></div>
+                <div class="project-info">
+                    <h3>Cellular Mutatio</h3>
+                    <div class="project-tools">
+                        <span>Processing</span>
+                        <span>Generative Art</span>
+                        <span>Animation</span>
+                    </div>
+                    <p>Animated cellular automata exploring emergent life-like behaviors.</p>
+                    <a href="cellular-mutatio.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/wigglescope.jpg');"></div>
+                <div class="project-info">
+                    <h3>Wigglescope</h3>
+                    <div class="project-tools">
+                        <span>Processing</span>
+                        <span>Microscopy</span>
+                        <span>Simulation</span>
+                    </div>
+                    <p>Generative protozoa simulation inspired by microscopic life.</p>
+                    <a href="wigglescope.html" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="data">
+        <h2>Data Terrains</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/continental-shifts.png');"></div>
+                <div class="project-info">
+                    <h3>Continental Shifts</h3>
+                    <div class="project-tools">
+                        <span>ComfyUI</span>
+                        <span>Stable Diffusion</span>
+                        <span>Sound Design</span>
+                    </div>
+                    <p>AI-generated Earth evolution animation mapped to geological soundscapes.</p>
+                    <a href="continental-shifts.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/ndvi-map.png');"></div>
+                <div class="project-info">
+                    <h3>Global NDVI Map</h3>
+                    <div class="project-tools">
+                        <span>Earth Engine</span>
+                        <span>JavaScript</span>
+                        <span>Data Viz</span>
+                    </div>
+                    <p>Satellite vegetation data (2010–2020) visualized as animated GIFs.</p>
+                    <a href="ndvi-map.html" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="interactive">
+        <h2>Interactive Media</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/spectral-sounds.png')"></div>
+                <div class="project-info">
+                    <h3>Spectral Sounds</h3>
+                    <div class="project-tools">
+                        <span>Tone.js</span>
+                        <span>Web Audio</span>
+                        <span>Data Sonification</span>
+                    </div>
+                    <p>Environmental degradation mapped to color and sound frequencies.</p>
+                    <a href="spectral-sounds.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/heatmap.png')"></div>
+                <div class="project-info">
+                    <h3>Heatmap Photobooth</h3>
+                    <div class="project-tools">
+                        <span>p5.js</span>
+                        <span>Computer Vision</span>
+                        <span>Interactive</span>
+                    </div>
+                    <p>Body movement shaping environmental heatmap visuals in real-time.</p>
+                    <a href="heatmap-photobooth.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/theeye.png')"></div>
+                <div class="project-info">
+                    <h3>Poetry Brought to Life</h3>
+                    <div class="project-tools">
+                        <span>p5.js</span>
+                        <span>Natural Language</span>
+                        <span>Generative</span>
+                    </div>
+                    <p>Interactive poem where language blooms into responsive ecosystems.</p>
+                    <a href="poetry-ecosystem.html" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="critical">
+        <h2>Critical Cartography</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/trisites.png');"></div>
+                <div class="project-info">
+                    <h3>TRI Site Map</h3>
+                    <div class="project-tools">
+                        <span>GIS</span>
+                        <span>EPA Data</span>
+                        <span>Climate Justice</span>
+                    </div>
+                    <p>Visualizing environmental injustice through toxic release inventory data.</p>
+                    <a href="tri-sites.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/cartstudy.png');"></div>
+                <div class="project-info">
+                    <h3>Cartographer's Study</h3>
+                    <div class="project-tools">
+                        <span>Procreate</span>
+                        <span>Illustration</span>
+                        <span>Biomes</span>
+                    </div>
+                    <p>Hand-drawn map series exploring global biomes and their transformations.</p>
+                    <a href="cartographers-study.html" class="project-link">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('assets/savannah_ga.png');"></div>
+                <div class="project-info">
+                    <h3>Sea Level Rise Map</h3>
+                    <div class="project-tools">
+                        <span>QGIS</span>
+                        <span>Cartography</span>
+                        <span>Climate Justice</span>
+                    </div>
+                    <p>Projected Sea Level Rise in Savannah, GA</p>
+                    <a href="sealevelrise.html" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2025 Chechi Amah | Creative Technologist</p>
+        <div style="margin-top: 1rem;">
+            <a href="mailto:chechiamah@gucla.edu" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">Contact</a>
+            <a href="https://github.com/chechiamah" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">GitHub</a>
+            <a href="https://linkedin.com/in/chechiamah" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>
