@@ -123,10 +123,17 @@
             font-size: 0.9rem;
         }
         
-        /* p5.js Embed container */
-        .p5-container {
+        .project-detail img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+        
+        .website-container {
             position: relative;
-            padding-bottom: 75%; /* 4:3 aspect ratio */
+            padding-bottom: 75%;
             height: 0;
             overflow: hidden;
             margin: 2rem 0;
@@ -135,7 +142,7 @@
             box-shadow: 0 3px 15px var(--shadow);
         }
         
-        .p5-container iframe {
+        .website-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -144,12 +151,12 @@
             border: none;
         }
         
-        .project-detail img {
-            max-width: 100%;
-            height: auto;
-            margin: 2rem 0;
+        pre {
+            background-color: var(--paper-2);
+            padding: 1rem;
             border-radius: 5px;
-            box-shadow: 0 3px 10px var(--shadow);
+            overflow-x: auto;
+            font-size: 0.9rem;
         }
         
         .back-link {
@@ -189,7 +196,7 @@
                 font-size: 2rem;
             }
             
-            .p5-container {
+            .website-container {
                 padding-bottom: 100%; 
             }
         }
@@ -218,11 +225,10 @@
                 <span>Webcam</span>
             </div>
         
-        <!-- p5.js Editor Embed -->
-        <div class="p5-container">
-            <iframe src="https://editor.p5js.org/studiouschech/full/KFGShBEin" 
+        <!-- Website Embed -->
+        <div class="website-container">
+            <iframe src="https://chechiamah.github.io/Heatmap-Photobooth/" 
                     frameborder="0" 
-                    allow="camera; microphone"
                     allowfullscreen></iframe>
         </div>
         
@@ -233,7 +239,7 @@
     <footer>
         <p>© 2025 Chechi Amah | Creative Technologist</p>
         <div style="margin-top: 1rem;">
-            <a href="mailto:chechiamah@gucla.edu" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">Contact</a>
+            <a href="mailto:chechiamah@g.ucla.edu" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">Contact</a>
             <a href="https://github.com/chechiamah" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">GitHub</a>
             <a href="https://linkedin.com/in/chechiamah" style="color: var(--ink); margin: 0 0.5rem; text-decoration: underline;">LinkedIn</a>
         </div>
